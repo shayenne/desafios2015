@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import numpy as np
+
 inds = raw_input()
 inds = inds.split()
 n = int(inds[0])
@@ -14,9 +16,8 @@ for i in range(n):
 
 def remove_coluna(n, j, a=[], *args):
     for i in range(n):
-        x = words[i]
-        x.remove(x[j])
-        words[i] = x
+        del a[i][j]
+    
 
 def matriz_boa(a=[], *args):
     if len(a) == 0 or len(a) == 1:
@@ -41,4 +42,6 @@ def matriz_boa(a=[], *args):
 
 
 print matriz_boa(words)
+
+
 
