@@ -26,8 +26,8 @@ for part in parts:
             part[3] += 1
 
 
-parts.sort(key=lambda tup: tup[3])
-actors.sort(key=lambda tup: tup[2])
+parts.sort(key=lambda tup: tup[0])
+actors.sort(key=lambda tup: tup[1])
             
 print parts
 print actors
