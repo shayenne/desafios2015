@@ -11,38 +11,38 @@ for i in range(n):
 
 def busca_binaria_ini(x, v):
     e = 0
-    d = len(v)-1
+    d = len(v)
     while e <= d:
         m = (e+d)/2
-        if v[m][0] <= x and v[m][1] > x:
+        if v[m][1] > x and v[m][0] <= x:
             return m
-        if v[m][1] < x:
+        if v[m][1] <= x:
             e = m + 1
         else:
             d = m - 1
-    return 0
+    print "Erro ini"
 
-def busca_binaria_fim(x, v):
-    e = 0
-    d = len(v)-1
+def busca_binaria_fim(x, v, ini):
+    e = ini
+    d = len(v)
     while e <= d:
         m = (e+d)/2
         if v[m][1] >= x and v[m][0] < x:
             return m
-        if v[m][0] < x:
+        if v[m][0] <= x:
             e = m + 1
         else:
             d = m - 1
-    return 0
+    print "Erro fim"
 
 faixas = [[0, 1000000000, 'w']]
 
 numfaixas = 1
 
 for i in range(n):
-    
+    """
     ant = busca_binaria_ini(paint[i][0], faixas)
-    pos = busca_binaria_fim(paint[i][1], faixas)
+    pos = busca_binaria_fim(paint[i][1], faixas, ant)
     """
     ant = 0
     while faixas[ant][1] < paint[i][0]:
@@ -51,7 +51,7 @@ for i in range(n):
     pos = ant
     while faixas[pos][1] < paint[i][1]:
         pos += 1
-    """
+   
 
     # Olha para a nova pintura e para onde ficam o inicio e o fim
     # Ambos os extremos estao em uma unica faixa
@@ -61,6 +61,7 @@ for i in range(n):
             faixas.insert(ant+1, [paint[i][1], faixas[ant][1], faixas[ant][2]])
             faixas.insert(ant+1, paint[i])
             faixas[ant][1] = paint[i][0]
+
     # Os extremos estao em faixas diferentes
     else:
         # As faixas possuem cores iguais
@@ -88,7 +89,7 @@ for i in range(n):
                 faixas[ant][1] = paint[i][0]
                 faixas[pos][0] = paint[i][0]
                 del faixas[ant+1:pos]
-
+print faixas
 
 fmax = [0, 0, 0]
 for faixa in faixas:
@@ -98,6 +99,6 @@ for faixa in faixas:
             fmax = faixa
             fmax[2] = val
 
-
+print faixas
 print fmax[0], fmax[1] 
 
