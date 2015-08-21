@@ -19,11 +19,17 @@ for k in range(len(seq)):
         j += 1
     else:
         i += 1
-        
-if i != 0 or j != 0:
-    px = math.floor((i + 1)/2)*2*W+math.pow(-1, i)*x0
-    py = math.floor((j + 1)/2)*2*D+math.pow(-1, j)*y0
 
-    length = math.sqrt(math.pow(px - x1, 2) + math.pow(py - y1, 2))
+if i % 2 == 0:
+    px = i*W+x0
+else:
+    px = (i+1)*W-x0
+
+if j % 2 == 0:
+    py = j*D+y0
+else:
+    py = (j+1)*D-y0
+
+length = math.sqrt((px - x1)*(px - x1) + (py - y1)*(py - y1))
 
 print round(length, 4)

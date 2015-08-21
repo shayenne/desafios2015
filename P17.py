@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import math
+
 n = int(raw_input())
 
 paint = []
@@ -11,12 +13,12 @@ for i in range(n):
 
 def busca_binaria_ini(x, v):
     e = 0
-    d = len(v)
+    d = len(v)-1
     while e <= d:
-        m = (e+d)/2
-        if v[m][1] > x and v[m][0] <= x:
+        m = int((e+d)/2)
+        if x <= v[m][1] and x > v[m][0]:
             return m
-        if v[m][1] <= x:
+        if x > v[m][1]:
             e = m + 1
         else:
             d = m - 1
@@ -24,12 +26,12 @@ def busca_binaria_ini(x, v):
 
 def busca_binaria_fim(x, v, ini):
     e = ini
-    d = len(v)
+    d = len(v)-1
     while e <= d:
-        m = (e+d)/2
-        if v[m][1] >= x and v[m][0] < x:
+        m = int((e+d)/2)
+        if x <= v[m][1] and x > v[m][0]:
             return m
-        if v[m][0] <= x:
+        if x > v[m][1]:
             e = m + 1
         else:
             d = m - 1
@@ -40,7 +42,8 @@ faixas = [[0, 1000000000, 'w']]
 numfaixas = 1
 
 for i in range(n):
-    """
+    if paint[i][0] == paint[i][1]:
+        break
     ant = busca_binaria_ini(paint[i][0], faixas)
     pos = busca_binaria_fim(paint[i][1], faixas, ant)
     """
@@ -51,8 +54,7 @@ for i in range(n):
     pos = ant
     while faixas[pos][1] < paint[i][1]:
         pos += 1
-   
-
+    """
     # Olha para a nova pintura e para onde ficam o inicio e o fim
     # Ambos os extremos estao em uma unica faixa
     if ant == pos:
@@ -89,7 +91,6 @@ for i in range(n):
                 faixas[ant][1] = paint[i][0]
                 faixas[pos][0] = paint[i][0]
                 del faixas[ant+1:pos]
-print faixas
 
 fmax = [0, 0, 0]
 for faixa in faixas:
@@ -99,6 +100,6 @@ for faixa in faixas:
             fmax = faixa
             fmax[2] = val
 
-print faixas
+
 print fmax[0], fmax[1] 
 
