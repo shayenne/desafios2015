@@ -1,3 +1,4 @@
+# Shayenne Moura
 #!/usr/bin/env python
 
 from sys import exit

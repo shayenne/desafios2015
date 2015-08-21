@@ -1,3 +1,4 @@
+/* Shayenne Moura */
 #include<stdio.h>
 #include<stdlib.h>
 

@@ -1,3 +1,4 @@
+# Shayenne Moura
 #!/usr/bin/env python
 
 import math
