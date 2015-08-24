@@ -12,14 +12,26 @@ seq = list(raw_input())
 
 
 length = 0
+idi = 0
+idj = 0
 i = 0
 j = 0
 for k in range(len(seq)):
     if seq[k] == 'F' or seq[k] == 'B':
+        if seq[k] == 'B' and idj == 0 and j == 0:
+            idj = -1
         j += 1
     else:
+        if seq[k] == 'R' and idi == 0 and i == 0:
+            idi = -1
         i += 1
 
+if idi != 0:
+    i *= idi
+    
+if idj != 0:
+    j *= idj
+        
 if i % 2 == 0:
     px = i*W+x0
 else:
