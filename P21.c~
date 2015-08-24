@@ -1,0 +1,64 @@
+#include<stdio.h>
+#include<math.h>
+#include<string.h>
+
+int main() {
+  int W, D;
+  int x0, y0;
+  int x1, y1;
+  int px, py;
+  char seq[1000];
+
+  int i, j, idi, idj, k, n;
+  float length;
+
+  i = 0;
+  j = 0;
+  idi = 0;
+  idj = 0;
+  n = 0;
+  length = 0;
+
+  scanf("%d %d", &W, &D);
+  scanf("%d %d", &x0, &y0);
+  scanf("%d %d\n", &x1, &y1);
+
+  
+  fgets(seq, 1000, stdin);
+  printf("%s", seq);
+  if (strcmp(seq, "\n")) {
+    for (n = 0; seq[n] != '\n'; n++);
+    for (k = 0; k < n; k++) {
+      if (seq[k] == 'F' || seq[k] == 'B') {
+	if (j == 0 && seq[k] == 'B')
+	  idj = -1;
+	j++;
+      }
+      else {
+	if (i == 0 && seq[k] == 'R')
+	  idi = -1;
+	i++;
+      }
+	
+    }
+  }
+
+  if (idi != 0)
+    i *= idi;
+
+  if (idj != 0)
+    j *= idj;
+
+  printf("%d %d\n", i, j);
+  
+  px = floor(i+1/2)*2*W+pow(-1, i)*x0;
+  py = floor(j+1/2)*2*D+pow(-1, j)*y0;
+
+  printf("%d %d\n", px, py);
+
+  length = sqrt(pow(px - x1, 2) + pow(py - y1, 2));
+
+  printf("%.4f %d %d", length, (int) pow(-1, -3), pow(-1, -2));
+  
+  return 0;
+}
