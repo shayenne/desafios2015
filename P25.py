@@ -1,3 +1,4 @@
+# Shayenne Moura
 #!/usr/bin/env python
 
 import math
@@ -15,7 +16,7 @@ def eh_primo(k):
     
 lista = []
 primos = {}
-for i in range(2, 998):
+for i in range(2, 10000):
     if eh_primo(i):
         lista.append(i)
 

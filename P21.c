@@ -6,11 +6,11 @@ int main() {
   int W, D;
   int x0, y0;
   int x1, y1;
-  int px, py;
-  char seq[1005];
+  long long px, py;
+  char seq[1005], x, buffer[20];
 
   int i, j, idi, idj, k, n;
-  float length;
+  double length;
 
   i = 0;
   j = 0;
@@ -19,16 +19,19 @@ int main() {
   n = 0;
   length = 0;
 
-  scanf("%d %d", &W, &D);
-  scanf("%d %d", &x0, &y0);
-  scanf("%d %d", &x1, &y1);
-  
+  fgets(buffer, sizeof(buffer), stdin);
+  sscanf(buffer, "%d %d", &W, &D);
+  fgets(buffer, sizeof(buffer), stdin);
+  sscanf(buffer, "%d %d", &x0, &y0);
+  fgets(buffer, sizeof(buffer), stdin);
+  sscanf(buffer, "%d %d", &x1, &y1);
+
   fgets(seq, sizeof(seq), stdin);
-  printf("%s", seq);
+
   if (strcmp(seq, "\n")) {
-    for (n = 0; seq[n] != '\n'; n++);
+    for (n = 0; n < 1000 && seq[n] != '\n'; n++);
     for (k = 0; k < n; k++) {
-      printf("Achei %c\n", seq[k]);
+   
       if (seq[k] == 'F' || seq[k] == 'B') {
 	if (j == 0 && seq[k] == 'B')
 	  idj = -1;
@@ -49,11 +52,6 @@ int main() {
   if (idj != 0)
     j *= idj;
 
-  printf("%d %d\n", i, j);
-  /*
-  px = floor(i+1/2)*2*W+pow(-1, i)*x0;
-  py = floor(j+1/2)*2*D+pow(-1, j)*y0;
-  */
   if (i % 2 == 0)
     px = i*W+x0;
   else
@@ -64,9 +62,7 @@ int main() {
   else
     py = (j+1)*D-y0;
   
-  printf("%d %d\n", px, py);
-
-  length = sqrt((px - x1)*(px - x1)+ (py - y1)*(py - y1));
+  length = sqrt((double)(px - x1)*(px - x1)+ (py - y1)*(py - y1));
 
   printf("%.4f\n", length);
   
