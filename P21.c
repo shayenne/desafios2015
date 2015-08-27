@@ -18,6 +18,7 @@ int main() {
   idj = 0;
   n = 0;
   length = 0;
+  seq[0] = '\0';
 
   fgets(buffer, sizeof(buffer), stdin);
   sscanf(buffer, "%d %d", &W, &D);
@@ -33,14 +34,15 @@ int main() {
     for (k = 0; k < n; k++) {
    
       if (seq[k] == 'F' || seq[k] == 'B') {
-	if (j == 0 && seq[k] == 'B')
-	  idj = -1;
-	j++;
+				if (j == 0 && seq[k] == 'B')
+	  			idj = -1;
+				j++;
       }
       else {
-	if (i == 0 && seq[k] == 'R')
-	  idi = -1;
-	i++;
+      	if (seq[k] == 'L' || seq[k] == 'R')
+					if (i == 0 && seq[k] == 'R')
+	  				idi = -1;
+					i++;
       }
 	
     }
