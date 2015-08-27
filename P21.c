@@ -34,15 +34,15 @@ int main() {
     for (k = 0; k < n; k++) {
    
       if (seq[k] == 'F' || seq[k] == 'B') {
-				if (j == 0 && seq[k] == 'B')
-	  			idj = -1;
-				j++;
+	if (j == 0 && seq[k] == 'F')
+	  idj = -1;
+	j++;
       }
       else {
       	if (seq[k] == 'L' || seq[k] == 'R')
-					if (i == 0 && seq[k] == 'R')
-	  				idi = -1;
-					i++;
+	  if (i == 0 && seq[k] == 'L')
+	    idi = -1;
+	i++;
       }
 	
     }
