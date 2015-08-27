@@ -15,7 +15,7 @@ def eh_primo(k):
     
 lista = []
 primos = {}
-for i in range(2, 998):
+for i in range(2, 100):
     if eh_primo(i):
         lista.append(i)
 
@@ -33,10 +33,10 @@ for i in range(10):
 
 num = 1
 for p in primos.keys():
-    if primos[p] > 0:
-        num *= primos[p]+1
+    num *= primos[p]+1
 
-
+print num
+print primos
 print num % 10
     
     

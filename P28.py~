@@ -1,0 +1,15 @@
+#!/usr/bin/env/ python
+
+
+def make_trie(word):
+    count = 0
+    current_dict = dict()
+    for letter in word:
+        current_dict = current_dict.setdefault(letter, {})
+        current_dict[_end] = _end
+        count += 1
+    return count
+
+word = raw_input()
+
+print make_trie(word)
