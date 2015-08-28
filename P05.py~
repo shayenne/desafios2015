@@ -35,6 +35,9 @@ for i in range(m):
     tmp = map(int, raw_input().split())
     actors.append(tmp + [i+1])
 
+print parts
+print actors
+
 parts.sort(key=lambda tup: tup[0])
 actors.sort(key=lambda tup: tup[1])
 
