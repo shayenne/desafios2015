@@ -34,19 +34,24 @@ int main() {
     for (k = 0; k < n; k++) {
    
       if (seq[k] == 'F' || seq[k] == 'B') {
-	if (j == 0 && seq[k] == 'F')
+	if (seq[k] == 'F')
 	  idj = -1;
+	else
+		idj = 1;
 	j++;
       }
       else {
       	if (seq[k] == 'L' || seq[k] == 'R')
-	  if (i == 0 && seq[k] == 'L')
+	  if (seq[k] == 'L')
 	    idi = -1;
+	  else
+	  	idi = 1;
 	i++;
       }
 	
     }
   }
+  
 
   if (idi != 0)
     i *= idi;
@@ -64,7 +69,7 @@ int main() {
   else
     py = (j+1)*D-y0;
   
-  length = sqrt((double)(px - x1)*(px - x1)+ (py - y1)*(py - y1));
+  length = sqrt((long long)(px - x1)*(px - x1)+(long long)(py - y1)*(py - y1));
 
   printf("%.4f\n", length);
   

@@ -13,10 +13,15 @@ def busca_binaria(x, v):
 				return m
 			else:
 				return menor
+
 		if x[1] > v[m][1]:
 			e = m + 1
 		else:
-			d = m - 1
+			menor = busca_binaria(x, v[m+1:d+1])
+			if menor == -1:
+				d = m - 1
+			else:
+				e = m + 1
 	return -1
 
 order = []
@@ -39,7 +44,7 @@ parts.sort(key=lambda tup: tup[0])
 actors.sort(key=lambda tup: tup[1])
 
 """
-
+#Funciona mas estoura o tempo
 for i in range(n):
     j = 0
     while j < len(actors):
@@ -57,6 +62,8 @@ for i in range(n):
         print "NO"
         exit(0)
 """
+
+
 
 for i in range(n):
 	bind = busca_binaria(parts[i], actors)
