@@ -1,3 +1,4 @@
+/* Shayenne Moura*/
 #include<stdio.h>
 #include<math.h>
 #include<string.h>
@@ -20,18 +21,27 @@ int main() {
   length = 0;
   seq[0] = '\0';
 
+  /*
   fgets(buffer, sizeof(buffer), stdin);
   sscanf(buffer, "%d %d", &W, &D);
   fgets(buffer, sizeof(buffer), stdin);
   sscanf(buffer, "%d %d", &x0, &y0);
   fgets(buffer, sizeof(buffer), stdin);
   sscanf(buffer, "%d %d", &x1, &y1);
-
   fgets(seq, sizeof(seq), stdin);
+  
+  */
+  scanf("%d %d", &W, &D);
+  scanf("%d %d", &x0, &y0);
+  scanf("%d %d", &x1, &y1);
+  scanf("%s", seq);
+  
 
-  if (strcmp(seq, "\n")) {
-    for (n = 0; n < 1000 && seq[n] != '\n'; n++);
+
+  if (strcmp(seq, "\0")) {
+    for (n = 0; n < 1000 && seq[n] != '\0'; n++);
     for (k = 0; k < n; k++) {
+<<<<<<< HEAD
       if (seq[k] == 'F' || seq[k] == 'B') {
 	if (j == 0 && seq[k] == 'B')
 	  idj = -1;
@@ -43,10 +53,28 @@ int main() {
 	    idi = -1;
 	  i++;
 	}
+=======
+      
+      if (seq[k] == 'F' || seq[k] == 'B') {
+	if (seq[k] == 'F')
+	  idj = -1;
+	else
+	  idj = 1;
+	j++;
+      }
+      else {
+      	if (seq[k] == 'L' || seq[k] == 'R')
+	  if (seq[k] == 'L')
+	    idi = -1;
+	  else
+	    idi = 1;
+	i++;
+>>>>>>> 9f427832df8a610cb5708da03b3334bb8a418ddd
       }
       
     }
   }
+  
 
   if (idi != 0)
     i *= idi;
@@ -64,7 +92,7 @@ int main() {
   else
     py = (j+1)*D-y0;
   
-  length = sqrt((double)(px - x1)*(px - x1)+ (py - y1)*(py - y1));
+  length = sqrt((long long)(px - x1)*(px - x1)+(long long)(py - y1)*(py - y1));
 
   printf("%.4f\n", length);
   

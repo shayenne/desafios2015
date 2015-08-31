@@ -1,0 +1,13 @@
+P09 union find
+
+pega pi, vê se a - pi ou b - bi estão no conjunto
+
+Se não houver não existe partição
+
+Se ambos estiverem, deve estar em algum dos dois
+
+para cada n verifica se os caras estão
+os que estiverem, junta as componentes
+cada componente pode já estar em seu proprio conjunto
+
+

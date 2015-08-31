@@ -34,10 +34,10 @@ for i in range(10):
 
 num = 1
 for p in primos.keys():
-    if primos[p] > 0:
-        num *= primos[p]+1
+    num *= primos[p]+1
 
-
+print num
+print primos
 print num % 10
     
     
