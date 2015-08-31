@@ -1,3 +1,4 @@
+/* Shayenne Moura*/
 #include<stdio.h>
 #include<math.h>
 #include<string.h>
@@ -20,24 +21,32 @@ int main() {
   length = 0;
   seq[0] = '\0';
 
+  /*
   fgets(buffer, sizeof(buffer), stdin);
   sscanf(buffer, "%d %d", &W, &D);
   fgets(buffer, sizeof(buffer), stdin);
   sscanf(buffer, "%d %d", &x0, &y0);
   fgets(buffer, sizeof(buffer), stdin);
   sscanf(buffer, "%d %d", &x1, &y1);
-
   fgets(seq, sizeof(seq), stdin);
+  
+  */
+  scanf("%d %d", &W, &D);
+  scanf("%d %d", &x0, &y0);
+  scanf("%d %d", &x1, &y1);
+  scanf("%s", seq);
+  
 
-  if (strcmp(seq, "\n")) {
-    for (n = 0; n < 1000 && seq[n] != '\n'; n++);
+
+  if (strcmp(seq, "\0")) {
+    for (n = 0; n < 1000 && seq[n] != '\0'; n++);
     for (k = 0; k < n; k++) {
-   
+      
       if (seq[k] == 'F' || seq[k] == 'B') {
 	if (seq[k] == 'F')
 	  idj = -1;
 	else
-		idj = 1;
+	  idj = 1;
 	j++;
       }
       else {
@@ -45,10 +54,10 @@ int main() {
 	  if (seq[k] == 'L')
 	    idi = -1;
 	  else
-	  	idi = 1;
+	    idi = 1;
 	i++;
       }
-	
+      
     }
   }
   
