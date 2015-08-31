@@ -32,19 +32,19 @@ int main() {
   if (strcmp(seq, "\n")) {
     for (n = 0; n < 1000 && seq[n] != '\n'; n++);
     for (k = 0; k < n; k++) {
-   
       if (seq[k] == 'F' || seq[k] == 'B') {
-				if (j == 0 && seq[k] == 'B')
-	  			idj = -1;
-				j++;
+	if (j == 0 && seq[k] == 'B')
+	  idj = -1;
+	j++;
       }
       else {
-      	if (seq[k] == 'L' || seq[k] == 'R')
-					if (i == 0 && seq[k] == 'R')
-	  				idi = -1;
-					i++;
+      	if (seq[k] == 'L' || seq[k] == 'R') {
+	  if (i == 0 && seq[k] == 'R')
+	    idi = -1;
+	  i++;
+	}
       }
-	
+      
     }
   }
 
