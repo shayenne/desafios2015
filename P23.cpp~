@@ -1,0 +1,9 @@
+#include <iostream>
+#include <string>
+
+using namespace std
+static const MAX = 75000;
+
+int main() {
+  string recebida, ultima;
+}

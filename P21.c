@@ -40,21 +40,7 @@ int main() {
 
   if (strcmp(seq, "\0")) {
     for (n = 0; n < 1000 && seq[n] != '\0'; n++);
-    for (k = 0; k < n; k++) {
-<<<<<<< HEAD
-      if (seq[k] == 'F' || seq[k] == 'B') {
-	if (j == 0 && seq[k] == 'B')
-	  idj = -1;
-	j++;
-      }
-      else {
-      	if (seq[k] == 'L' || seq[k] == 'R') {
-	  if (i == 0 && seq[k] == 'R')
-	    idi = -1;
-	  i++;
-	}
-=======
-      
+    for (k = 0; k < n; k++) {      
       if (seq[k] == 'F' || seq[k] == 'B') {
 	if (seq[k] == 'F')
 	  idj = -1;
@@ -69,7 +55,6 @@ int main() {
 	  else
 	    idi = 1;
 	i++;
->>>>>>> 9f427832df8a610cb5708da03b3334bb8a418ddd
       }
       
     }
