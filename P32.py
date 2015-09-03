@@ -1,4 +1,4 @@
-#n = int(raw_input())
+#/usr/bin/env python 
 
 import math
 
@@ -8,11 +8,16 @@ def eh_primo(k):
             return False
     return True
 
+tabela = []
 count = 0
-for i in range(1000, 10000):
+for i in range(100, 1000):
     if eh_primo(i):
+        tabela.append(i)
         count +=1
 
+n =int(raw_input())
 
+for i in range(n-2):
+    
 
 print count
