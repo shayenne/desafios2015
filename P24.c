@@ -1,8 +1,12 @@
+/*Shayenne Moura*/
+
 #include<stdio.h>
 #include<stdlib.h>
 
 #define maxV 1000000
 #define Vertex long long
+
+/*Estrutura de Dados copiada das notas de aula do professor Paulo Feofiloff*/
 
 /* REPRESENTAÇÃO POR LISTAS DE ADJACÊNCIA: A estrutura digraph representa um digrafo. O campo adj é um ponteiro para o vetor de listas de adjacência, o campo V contém o número de vértices e o campo A contém o número de arcos. */
 
@@ -123,6 +127,7 @@ int main() {
   long long i, x, y;
   Digraph d;
   long long n, k;
+  long long ord[maxV];
 
   scanf("%d %d", &n, &k);
 
@@ -137,8 +142,11 @@ int main() {
 
     if (!DIGRAPHcycle(d)) {
       DAGts( d);
+      for (i = 0; i < n; i++) 
+	ord[tsi[i]] = i;
+ 
       for (i = 0; i < n; i++)
-	printf("%d\n", tsi[i]+1);
+	printf("%d\n", ord[i]+1);
     }
     else
       printf("IMPOSSIBLE\n");
