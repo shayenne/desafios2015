@@ -8,7 +8,7 @@ def busca_binaria(x, v):
 	while e <= d:
 		m = int((e+d)/2)
 		if x[0] >= v[m][0] and x[1] <= v[m][1]:
-			menor = busca_binaria(x, v[0:m])
+			menor = busca_binaria(x, v[e:m])
 			if menor == -1:
 				return m
 			else:
@@ -17,11 +17,11 @@ def busca_binaria(x, v):
 		if x[1] > v[m][1]:
 			e = m + 1
 		else:
-			menor = busca_binaria(x, v[m+1:d+1])
+			menor = busca_binaria(x, v[e:m])
 			if menor == -1:
-				d = m - 1
-			else:
-				e = m + 1
+				return busca_binaria(x, v[m+1: d+1])
+			d = m - 1
+
 	return -1
 
 order = []

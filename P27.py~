@@ -29,7 +29,7 @@ for i in range(n):
 
         if x == intervalo[new][0]:
             grau[new] += 1
-            intervalo.insert(new, [x, x, intervalo[new][2]+1])
+            intervalo.insert(new+1, [x, x, intervalo[new][2]+1])
             
         else:
             grau[new] += 1
