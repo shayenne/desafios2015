@@ -17,11 +17,16 @@ def busca_binaria(x, v):
 		if x[1] > v[m][1]:
 			e = m + 1
 		else:
+						
 			menor = busca_binaria(x, v[e:m])
 			if menor == -1:
-				return busca_binaria(x, v[m+1: d+1])
-			d = m - 1
-
+				for i in range(m+1, d+1):
+					if x[0] >= v[i][0] and x[1] <= v[i][1]:
+						return i
+				return -1
+			else:
+				return menor
+			
 	return -1
 
 order = []
