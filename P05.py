@@ -4,23 +4,22 @@ from sys import exit
 
 def busca_binaria(x, v):
 	e = 0
-	d = len(v)-1
+	d = len(v)
 	while e <= d:
 		m = int((e+d)/2)
 		if x[0] >= v[m][0] and x[1] <= v[m][1]:
 			menor = busca_binaria(x, v[e:m])
-			if menor == -1:
-				return m
-			else:
+			if menor != -1 and menor < m:
 				return menor
+			else:
+				return m
 
 		if x[1] > v[m][1]:
 			e = m + 1
 		else:
-						
 			menor = busca_binaria(x, v[e:m])
 			if menor == -1:
-				for i in range(m+1, d+1):
+				for i in range(m+1, d):
 					if x[0] >= v[i][0] and x[1] <= v[i][1]:
 						return i
 				return -1
