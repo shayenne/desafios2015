@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+
+n = int(raw_input())
+
+stones = map(int, raw_input().split())
+
+
+stones.sort()
+stones.reverse()
+
+
+p = [0, 0]
+j = 0
+i = 0
+
+#p[0] = stones[0]
+
+while len(stones) > 1:
+    diff = stones[0] - stones[1]
+    del stones[1]
+    del stones[0]
+    if diff != 0:
+        stones.append(diff)
+        stones.sort()
+        stones.reverse()
+
+
+print stones
