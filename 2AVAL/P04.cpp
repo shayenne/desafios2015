@@ -1,8 +1,9 @@
+/* Shayenne Moura*/
 #include<iostream>
 
 using namespace std;
 
-void imprimeSolucao(int n, int tab[9][9]) {
+void imprimeSolucao(int n, int tab[][9]) {
   for (int i = 0; i < n*n; i++) {
     for (int j = 0; j < n*n; j++)
       cout << tab[i][j] << " ";
@@ -10,7 +11,7 @@ void imprimeSolucao(int n, int tab[9][9]) {
   }
 }
 
-int value(int n, int i, int j, int tab[9][9], int qtd) {
+int value(int n, int i, int j, int tab[][9], int qtd) {
   int numbers[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
   int k, l, r, s;
   r = -1;

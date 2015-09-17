@@ -1,0 +1,10 @@
+#!/urs/bin/env python
+
+m = int(raw_input())
+
+products = {}
+for i in xrange(m):
+    x = raw_input().split()
+    products[x[2]] = int(x[0])
+
+print products
