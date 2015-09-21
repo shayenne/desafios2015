@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+
+n = int(raw_input())
+
+parents = {}
+
+for i in xrange(n):
+    x, y = map(int, raw_input().split())
+
+    parents[y].add(x)
+    children[x].add(y)
+
+print parents, children
+    
+raw_input()
+
+while (victim = raw_input()):
+    del parents[victim]
+    del children[victim]
+
+print parents, children
