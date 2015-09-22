@@ -2,22 +2,28 @@
 
 def removeParents(v, p, s):
     if v not in p:
-        s.remove(v)
+        if v in s:
+            s.remove(v)
         return
 
     for x in p[v]:
+        if x in s: 
+            s.remove(x)
         removeParents(x, p, s)
     
-    del p[x]
+    
 
 def removeChildren(v, c, s):
     if v not in c:
-        s.remove(v)
+        if v in s: 
+            s.remove(v)
         return
 
-    if x in c[v]:
+    for x in c[v]:
+        if x in s:
+            s.remove(x)
         removeChildren(x, c, s)
-    del c[x]
+    
 
 
             
@@ -37,19 +43,23 @@ while entr != 'BLOOD':
     children[x].add(y)
     entr = raw_input()
 
-print parents, children
-
-suspect = set()
-
-for i in xrange(n):
-    suspect.add(i)
+suspect = range(1, n+1)
 
 victim = int(raw_input())
 while (victim != ""):
+    victim = int(victim)
     removeParents(victim, parents, suspect)
     removeChildren(victim, children, suspect)
-    suspect.remove(victim)
-    victim = raw_input()
+    if victim in suspect:
+        suspect.remove(victim)
+    try:
+        victim = raw_input()
+    except EOFError:
+        victim = ""
 
-print parents, children
-print suspect
+
+if len(suspect) == 0:
+    print "0"
+else:
+    print ' '.join(map(str, suspect))
+
