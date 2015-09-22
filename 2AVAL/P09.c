@@ -1,4 +1,12 @@
-/*Shayenne Moura*/
+/*
+
+Nome: Shayenne Moura
+NUSP: 8536235
+MAC0327 - 2o sem 2015
+2a aval
+Problema P9 - 1022. Genealogical Tree
+
+*/
 
 #include<stdio.h>
 #include<stdlib.h>

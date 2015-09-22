@@ -33,17 +33,17 @@ def caminha(lst, graph, index, dist):
         if dist[people] != 'undefined':
             if dist[people] > index:
                 dist[people] = index
-            return
+            
         else:
             dist[people] = index
             caminha(graph[people], graph, index+1, dist)
-        
+            
 
 n = int(raw_input())
 
 graph = {}
 index = {}
-names = []
+visited = []
 
 for i in xrange(n):
     x, y, z  = raw_input().split()
@@ -61,7 +61,8 @@ for i in xrange(n):
     graph[z].add(y)
     
 
-
+    
+"""    
 for people in graph:
             
     if people == 'Isenbaev':
@@ -80,14 +81,23 @@ names.sort(key = lambda tup:tup[0])
 
 for name in names:
     print name[0], name[1]
-    
+"""
+
+ordem = []
 nomes = {}
 for people in graph:
     nomes[people] = 'undefined'
 
-for people in graph:
-    if 'Isenbaev' in graph:
-        caminha(graph['Isenbaev'], graph, 0, nomes)
+if 'Isenbaev' in graph:
+    nomes['Isenbaev'] = 0
+    for people in graph:
+        caminha(graph['Isenbaev'], graph, 1, nomes)
 
-for nome in nomes:
-    print nome, nomes[nome]
+print nomes
+for people in graph:
+    ordem.append([people, nomes[people]])
+
+ordem.sort(key = lambda tup: tup[0])
+    
+for x in ordem:
+    print x[0], x[1]

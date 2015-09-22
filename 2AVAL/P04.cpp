@@ -1,5 +1,7 @@
 /* Shayenne Moura*/
 #include<iostream>
+#include<string>
+#include<sstream>
 
 using namespace std;
 
@@ -61,28 +63,38 @@ int value(int n, int i, int j, int tab[][9], int qtd) {
 }
 
 int main() {
+  string entry;
   int n;
   int sudoku[9][9];
   int qtd;
 
-  qtd = 0;
 
-  cin >> n;
-
-  for (int i = 0; i < n*n; i++)
-    for (int j = 0; j < n*n; j++) {
-      cin >> sudoku[i][j];
-      if (sudoku[i][j])
-	qtd +=1 ;
-    }
-
-  if (qtd == n*n*n*n)
-    imprimeSolucao(n, sudoku);
-  else {
-    if (value(n, 0, 0, sudoku, qtd))
+  getline(cin, entry);
+  while (!entry.empty()) {
+    qtd = 0;
+    stringstream(entry) >> n;
+    
+    for (int i = 0; i < n*n; i++)
+      for (int j = 0; j < n*n; j++) {
+	cin >> sudoku[i][j];
+	if (sudoku[i][j])
+	  qtd +=1 ;
+      }
+    
+    if (qtd == n*n*n*n)
       imprimeSolucao(n, sudoku);
-    else
-      cout << "NO SOLUTION" << endl;	
+    else {
+      if (value(n, 0, 0, sudoku, qtd))
+	imprimeSolucao(n, sudoku);
+      else
+	cout << "NO SOLUTION" << endl;
+
+      cout << endl;
+    }
+    getline(cin, entry);
+    getline(cin, entry);
+    getline(cin, entry);
+
   }
   return 0;
 }
