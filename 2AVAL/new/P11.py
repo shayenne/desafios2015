@@ -1,4 +1,10 @@
-# Shayenne Moura
+"""
+Nome: Shayenne Moura
+NUSP: 8536235
+MAC0327 - 2o sem 2015
+2a aval
+Problema P11 - 1005. Stone Pile
+"""
 #!/usr/bin/env python
 
 def minima_distancia(m, x, v):

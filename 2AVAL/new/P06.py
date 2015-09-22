@@ -1,4 +1,10 @@
-# Shayenne Moura
+"""
+Nome: Shayenne Moura
+NUSP: 8536235
+MAC0327 - 2o sem 2015
+2a aval
+Problema P6 - 1795. Husband in a Shop
+"""
 #!/urs/bin/env python
 
 m = int(raw_input())
