@@ -26,28 +26,37 @@ def change(move, i, j):
     return p
 
 def findSolution(conf, patt, finds, n):
-    finds = range(65536)
+    finds = [False]*65536
     n = 0
     
-    verify = [conf]
-    finds.remove(conf)
+    if conf == 65535 or conf == 0:
+        return "{}".format(n)
     
+    verify = [conf]
+    finds[conf] = True
+    n+=1
     while (len(verify) > 0):
-        elem = verify[0]
-        print "\n---------------------------------------------\n"
-        print verify
-        verify.remove(elem)
+        lst = []
+        
+        while(len(verify) > 0):
+            elem = verify[0]
 
-        for i in xrange(16):
-            new = elem ^ patt[i]
-            if new in finds:
-                verify.append(new)
-                finds.remove(new)
-                while len(lst) > 0:
-                    
+            verify.remove(elem)
 
-            if new == 65535 or new == 0:
-                return "{}".format(n)
+            for i in xrange(16):
+                new = elem ^ patt[i]
+            
+                if new == 65535 or new == 0:
+                    print new, elem, patt[i]
+                    print "Entrei"
+                    return "{}".format(n)
+            
+                if not finds[new]:
+                    lst.append(new)
+                    finds[new] = True
+
+        
+        verify = lst        
         n += 1
             
     return False
