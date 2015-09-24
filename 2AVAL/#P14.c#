@@ -1,0 +1,28 @@
+
+
+#define cc bbbb
+
+/* A função abaixo devolve o número de componentes do grafo G. Além disso, armazena no vetor G->cc o número da componente a que cada vértice pertence: se o vértice v pertence à k-ésima componente então G->cc[v] == k. (O código foi copiado do programa 18.4 de Sedgewick.) */
+
+int GRAPHcc( Graph G) 
+{ 
+   Vertex v; int id = 0;
+   for (v = 0; v < G->V; v++) 
+      G->cc[v] = -1;
+   for (v = 0; v < G->V; v++)
+      if (G->cc[v] == -1) 
+         dfsRcc( G, v, id++);
+   return id;
+}
+
+/* A função dfsRcc marca com id todos os vértices que estão na mesma componente conexa que v. (Ou seja, faz cc[w] = id para todo w que esteja na mesma componente que v.)  A função supõe que o grafo é representado por listas de adjacência. */
+
+void dfsRcc( Graph G, Vertex v, int id) 
+{ 
+   link a; 
+   G->cc[v] = id;
+   for (a = G->adj[v]; a != NULL; a = a->next)
+      if (G->cc[a->w] == -1) 
+         dfsRcc( G, a->w, id); 
+}
+

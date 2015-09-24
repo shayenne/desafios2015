@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+n, m = map(int, raw_input().split())
+
+for i in range(m):
+    v, w = map(int, raw_input().split())
+
+t = int(raw_input())
+
+threads = map(int, raw_input().split())
+
+print n, m
+print t, threads
