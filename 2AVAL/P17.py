@@ -9,8 +9,14 @@ Problema P17 - 1004. Sightseeing Trip
 
 entry = raw_input().split()
 while entry[0] != '-1':
+    routes = []
     n, m = map(int, entry)
-    entry = raw_input().split()
-    print entry
 
-print n, m
+    for i in xrange(m):
+        routes.append(map(int, raw_input().split()))
+
+    print n, m
+    print routes
+
+    entry = raw_input().split()
+
