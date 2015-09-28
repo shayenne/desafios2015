@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+
+color = []
+
+def GRAPHtwocolor( graph):
+    global color = [-1]*len(graph)+1
+    c = 0
+    for v in graph:
+        if color[v] = -1:
+            if not dfsRcolor( graph, v, c):
+                return 0
+    return 1
+
+def dfsRcolor( graph, v, c):
+    color[v] = 1-c
+    for w in graph[v]:
+        if color[w] == -1:
+            if not dfsRcolor( G, w, 1-c):
+                return 0
+
+        elif color[w] == 1-c:
+            return 0
+    return 1
+
+
+n = int(raw_input())
+
+
+graph = {}
+for i in xrange(n):
+    graph[i] = set()
+    x = map(int, raw_input().split()))
+    graph[i].add(x[0:len(x)-1])
+
+if GRAPHtocolor( graph):
+    print ' '.join(color)
+else:
+    print -1
