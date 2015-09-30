@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+
+caminho = []
+
+def haNova(rotas, num, encontra, vista, partida):
+    i = rotas[num].index(partida)
+
+    while rota[num][i] != -1:
+        global caminho
+        caminho.append(rota[num][i])
+        rota[num][i] = -1
+        if encontra[rota[num][i]] == set():
+            i += 1
+            if i == len(rota):
+                i = 2
+        else:
+            for r in encontra[rota[num][i]]:
+                encontra[rota[num][i]].remove(r)
+                if not vista[r]:
+                    vista[r] = True
+                    haNova(rotas, r, encontra, vista, rota[num][i])
+
+    return vista
+
+
+n = int(raw_input())
+
+for i in xrange(n):
+    rotas.append(map(int, raw_input().split()))
+
+    
+for i in xrange(n):
+    for ponto in rotas[i]:
+        if ponto is not in encontra:
+            encontra[ponto] = set()
+        encontra[ponto].add(i)
+
+vista = [False]*n
+
+vista = haNova(rotas, 0, encontra, vista, rotas[0][2])
+
+if False is in vista:
+    print 0
+else:
+    print len(caminho), ' '.join(map(str, caminho[1:len(caminho)], caminho[1]))

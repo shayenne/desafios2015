@@ -1,5 +1,20 @@
 #!/usr/bin/env python
 
+# Existe caminho que liga v a w?
+def haCaminho(graph, v, w, vistos):
+
+    if v == w:
+        return True
+    
+    vistos[v] = True
+
+    for s in graph[v]:
+        if not vistos[s]:
+            vistos[s] = True
+            return haCaminho(graph, s, w, vistos)
+
+    return False
+
 def componentes(graph):
     cnt = 0
     visto = range(len(graph)+1)
@@ -37,11 +52,19 @@ t = int(raw_input())
 
 remove = map(int, raw_input().split())
 
+qtdcomp = componentes(graph)
+
 comp = []
+
 for t in remove:
+    vistos = [False]*(len(graph)+1)
     if threads[t][0] in graph and threads[t][1] in graph[threads[t][0]]:
         graph[threads[t][0]].remove(threads[t][1])
         graph[threads[t][1]].remove(threads[t][0])
-    comp.append(componentes(graph))
+        
+    if not haCaminho(graph, threads[t][0], threads[t][1], vistos):
+        qtdcomp += 1
+        
+    comp.append(qtdcomp)
 
 print ' '.join(map(str, comp))
