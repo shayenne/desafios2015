@@ -1,3 +1,10 @@
+"""
+Nome: Shayenne Moura
+NUSP: 8536235
+MAC0327 - 2o sem 2015
+2a aval
+Problema P10 - 1242. Werewolf
+"""
 #!/usr/bin/env python
 
 def removeParents(v, p, s):
