@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
-# Existe caminho que liga v a w?
-def haCaminho(graph, v, w, vistos):
+vistos = []#[False]*100000
 
+# Existe caminho que liga v a w?
+def haCaminho(graph, v, w):
+    global vistos
     if v == w:
         return True
     
@@ -11,60 +13,69 @@ def haCaminho(graph, v, w, vistos):
     for s in graph[v]:
         if not vistos[s]:
             vistos[s] = True
-            return haCaminho(graph, s, w, vistos)
+            return haCaminho(graph, s, w)
 
     return False
 
 def componentes(graph):
+    global vistos
     cnt = 0
-    visto = range(len(graph)+1)
+    vistos = range(len(graph)+1)
     for v in graph:
-        visto[v] = -1
+        vistos[v] = -1
     for v in graph:
-        if visto[v] == -1:
+        if vistos[v] == -1:
             cnt += 1
-            dfs( graph, v, cnt, visto)
+            dfs( graph, v, cnt)
             
     return cnt
 
-def dfs(graph, v, cnt, visto):
-    visto[v] = cnt
+def dfs(graph, v, cnt):
+    global vistos
+    vistos[v] = cnt
     for a in graph[v]:
-        if visto[a] == -1:
-            dfs(graph, a, cnt, visto)
+        if vistos[a] == -1:
+            dfs(graph, a, cnt)
+
+def main():
+    global vistos
+    n, m = map(int, raw_input().split())
+    
+    graph = {}
+    threads = [[0, 0]]
+    
+    for i in range(1, n+1):
+        graph[i] = [] 
         
+    for i in range(m):
+        v, w = map(int, raw_input().split())
+        graph[v].append(w)
+        graph[w].append(v)
+        threads.append([v, w])
 
-n, m = map(int, raw_input().split())
+    t = int(raw_input())
 
-graph = {}
-threads = [[0, 0]]
+    remove = map(int, raw_input().split())
 
-for i in range(1, n+1):
-    graph[i] = [] 
+    qtdcomp = componentes(graph)
+    
+    comp = []
 
-for i in range(m):
-    v, w = map(int, raw_input().split())
-    graph[v].append(w)
-    graph[w].append(v)
-    threads.append([v, w])
-
-t = int(raw_input())
-
-remove = map(int, raw_input().split())
-
-qtdcomp = componentes(graph)
-
-comp = []
-
-for t in remove:
-    vistos = [False]*(len(graph)+1)
-    if threads[t][0] in graph and threads[t][1] in graph[threads[t][0]]:
-        graph[threads[t][0]].remove(threads[t][1])
-        graph[threads[t][1]].remove(threads[t][0])
+    for t in remove:
+        vistos = [False]*(len(graph)+1)
+        if threads[t][0] in graph and threads[t][1] in graph[threads[t][0]]:
+            graph[threads[t][0]].remove(threads[t][1])
+            graph[threads[t][1]].remove(threads[t][0])
         
-    if not haCaminho(graph, threads[t][0], threads[t][1], vistos):
-        qtdcomp += 1
+        if not haCaminho(graph, threads[t][0], threads[t][1]):
+            qtdcomp += 1
         
-    comp.append(qtdcomp)
+        comp.append(qtdcomp)
 
-print ' '.join(map(str, comp))
+    print ' '.join(map(str, comp))
+
+
+
+
+if __name__ == "__main__":
+    main()

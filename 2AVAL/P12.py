@@ -9,7 +9,7 @@ def haNova(rotas, num, encontra, vista, partida):
 
     while rotas[num][i] != -1:
         x = rotas[num][i]
-        #global caminho
+        global caminho
         if len(caminho) == 0 or x != caminho[len(caminho)-1]:
             caminho.append(x)
 	if i == 1:
