@@ -1,6 +1,6 @@
 
 
-def calculaConfiguracao(v, play):
+def calculaConfiguracao(v, play, ind):
     lin = [0, 0, 0]
     col = [0, 0, 0]
     dia = [0, 0]
@@ -13,12 +13,55 @@ def calculaConfiguracao(v, play):
                 dia[1] += v[i*3+j]
         col[i] += v[i*3]
 
-    if verifica(dia[0]) or verifica(dia[1]):
-        return True
+    if verifica(dia[0]):
+        return verifica(dia[0])
+    if verifica(dia[1]):
+        return verifica(dia[1])
     for i in xrange(3):
-        if verifica(lin[i]) or verifica(col[i]):
-            return True
+        if verifica(lin[i]):
+            return verifica(lin[i])
+        if verifica(col[i]):
+            return verifica(col[i])
 
+
+    v[ind] = 0
+    chance = 0
+    for i in xrange(ind+1, len(v)):
+        if v[i] == 0:
+            v[i] = play
+            x = calculaConfiguracao(v, play, i)
+            if x == -1 and play == -1:
+                chance += 1
+                if chance == 2:
+                    return x
+            elif x:
+                #print "Crosses win"
+                return x
+            else:
+                v[i] = 0
+    
+    
+    v[ind] = play
+    for i in xrange(len(v)):
+        if v[i] == 0:
+            v[i] = 0-play
+            x = calculaConfiguracao(v, 0-play, i)
+            return x
+            break
+            #if x == 0-play:
+            #    chance+=1
+            #    if chance == 2:
+            #        return x
+            #else:
+            #    v[i] = 0
+            
+    
+    return False
+    
+            
+    
+    
+"""    
     new = v
     for i in xrange(len(new)):
         if new[i] == 0:
@@ -31,19 +74,18 @@ def calculaConfiguracao(v, play):
                 print new
             else:
                 return True
-        
-    return False 
+"""        
+
     
 
 def verifica(soma):
     if soma == 3:
-        print "Crosses win"
-        return True
+        #print "Crosses win"
+        return 1
     elif soma == -3:
-        print "Ouths win"
-        return True
+        #print "Ouths win"
+        return -1
     else:
-        print "Calma"
         return False
 
 
@@ -64,7 +106,17 @@ if __name__ == "__main__":
             else:
                 v.append(0)
 
-    if not calculaConfiguracao(v, 1):
-        print "Draw"
+    for i in xrange(len(v)):
+        if v[i] == 0:
+            v[i] = 1
+            break
 
     
+    res = calculaConfiguracao(v, 1, i)
+    if res == 1:
+        print "Crosses win"
+    elif res == -1:
+        print "Ouths win"
+    else:
+        print "Draw"
+       
