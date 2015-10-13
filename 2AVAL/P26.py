@@ -1,6 +1,7 @@
 
 
 def calculaConfiguracao(v, play, ind):
+    print v
     lin = [0, 0, 0]
     col = [0, 0, 0]
     dia = [0, 0]
@@ -11,43 +12,68 @@ def calculaConfiguracao(v, play, ind):
                 dia[0] += v[i*3+j]
             if j == 2 - i:
                 dia[1] += v[i*3+j]
-        col[i] += v[i*3]
+            col[i] += v[j*3+i]
 
     if verifica(dia[0]):
         return verifica(dia[0])
     if verifica(dia[1]):
         return verifica(dia[1])
     for i in xrange(3):
+        print lin[i], col[i]
         if verifica(lin[i]):
             return verifica(lin[i])
         if verifica(col[i]):
             return verifica(col[i])
 
+    return False
 
+def fazMovimento(v, play, ind):
+    
+    if calculaConfiguracao(v, play, ind):
+        return play
+    
+    
+    testa = [v[:]]
+    
     v[ind] = 0
-    chance = 0
+    #chance = 0
     for i in xrange(ind+1, len(v)):
         if v[i] == 0:
             v[i] = play
             x = calculaConfiguracao(v, play, i)
-            if x == -1 and play == -1:
-                chance += 1
-                if chance == 2:
-                    return x
-            elif x:
+            #if x == -1 and play == -1:
+            #    chance += 1
+            #    if chance == 2:
+            #        return x
+            if x:
                 #print "Crosses win"
                 return x
             else:
+                testa.append(v[:])
                 v[i] = 0
+                
+    print testa
+    ver = []
+    for w in testa:
+        chance = 0
     
-    
-    v[ind] = play
-    for i in xrange(len(v)):
-        if v[i] == 0:
-            v[i] = 0-play
-            x = calculaConfiguracao(v, 0-play, i)
-            return x
-            break
+        for i in xrange(len(w)):
+            if w[i] == 0:
+                w[i] = 0-play
+                x = calculaConfiguracao(w, 0-play, i)
+                print x
+                if x == -1:
+                    chance += 1
+                    if chance == 2:
+                        return x
+                    
+                    ver.append(w[:])
+                    w[i] = 0
+                else:
+                    ver.append(w[:])
+                    w[i] = 0
+            
+            
             #if x == 0-play:
             #    chance+=1
             #    if chance == 2:
@@ -55,6 +81,15 @@ def calculaConfiguracao(v, play, ind):
             #else:
             #    v[i] = 0
             
+    for u in ver:
+        for i in xrange(len(u)):
+            if u[i] == 0:
+                u[i] = play
+                x = calculaConfiguracao(u, play, i)
+                print x
+                if x:
+                    return x
+                break
     
     return False
     
@@ -106,13 +141,14 @@ if __name__ == "__main__":
             else:
                 v.append(0)
 
+    print v
     for i in xrange(len(v)):
         if v[i] == 0:
             v[i] = 1
             break
-
+    print v
     
-    res = calculaConfiguracao(v, 1, i)
+    res = fazMovimento(v, 1, i)
     if res == 1:
         print "Crosses win"
     elif res == -1:
