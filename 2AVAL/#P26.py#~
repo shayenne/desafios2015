@@ -1,0 +1,14 @@
+
+
+def melhorJogada(game, player):
+    for i in xrange(3):
+        for j in xrange(3):
+            if game[i][j] == "#":
+                
+
+
+game = []
+for i in xrange(3):
+    game.append(list(raw_input()))
+
+melhorJogada(game, "X")

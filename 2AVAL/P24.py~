@@ -1,0 +1,24 @@
+import heapq as q
+
+m = int(raw_input())
+
+pq = []
+
+tam = 1
+x = raw_input()
+
+while x != "-1":
+    x = int(x)
+    q.heappush(pq, [(-1)*x, tam])
+
+    if tam >= m:
+        l = q.heappop(pq)
+        q.heappush(pq, l)
+        while pq != [] and tam - l[1] >=  m:
+            l = q.heappop(pq)
+        print (-1)*l[0]
+            
+    
+    tam += 1
+    
+    x  = raw_input()

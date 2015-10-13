@@ -29,17 +29,17 @@ def calculaConfiguracao(v, play, ind):
 
 def fazMovimento(v, play, ind):
     
-    if calculaConfiguracao(v, play, ind):
-        return play
+    #if calculaConfiguracao(v, play, ind):
+    #    return play
     
     
-    testa = [v[:]]
+    testa = []
     
-    v[ind] = 0
+    #v[ind] = 0
     #chance = 0
-    for i in xrange(ind+1, len(v)):
+    for i in xrange(len(v)):
         if v[i] == 0:
-            v[i] = play
+            v[i] = 1
             x = calculaConfiguracao(v, play, i)
             #if x == -1 and play == -1:
             #    chance += 1
@@ -59,7 +59,7 @@ def fazMovimento(v, play, ind):
     
         for i in xrange(len(w)):
             if w[i] == 0:
-                w[i] = 0-play
+                w[i] = -1
                 x = calculaConfiguracao(w, 0-play, i)
                 print x
                 if x == -1:
@@ -69,9 +69,21 @@ def fazMovimento(v, play, ind):
                     
                     ver.append(w[:])
                     w[i] = 0
+                elif x == 1:
+                    print "Tem algo estranho aqui "
                 else:
-                    ver.append(w[:])
+                    w[i] = 1
+                    q = w.index(0)
+                    w[q] = -1
+                    if calculaConfiguracao(w, play, i) == 1:
+                        w[i] = -1
+                        w[q] = 0
+                        ver.append(w[:])
+                    else:
+                        w[i] = 0
+                        ver.append(w[:])
                     w[i] = 0
+                    break
             
             
             #if x == 0-play:
@@ -141,11 +153,11 @@ if __name__ == "__main__":
             else:
                 v.append(0)
 
-    print v
-    for i in xrange(len(v)):
-        if v[i] == 0:
-            v[i] = 1
-            break
+    #print v
+    #for i in xrange(len(v)):
+    #    if v[i] == 0:
+    #        v[i] = 1
+     #       break
     print v
     
     res = fazMovimento(v, 1, i)
