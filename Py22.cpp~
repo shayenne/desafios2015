@@ -20,26 +20,27 @@ int main () {
   unsigned int n, i;
   unsigned int x;
   double med;
-  priority_queue<unsigned int> pq;
-  
+
+  int v[250000/2+3];
+
+  i = 0;
+
   cin >> n;
-
-  for (i = 0; i < n; i++) {
-    cin >> x;
-
-    pq.push(x);  
-    if (pq.size() > (n/2)+1)
-      pq.pop();
-
-  }
+   for(; i < n/2+1; ++i) cin >> v[i];
+   make_heap(v,v+n/2+1);
+   for(; i < n; ++i){
+     cin >> v[n/2+1];
+     push_heap(v,v+n/2+2);
+     pop_heap(v,v+n/2+2);
+   }
     
 
   if (n % 2 != 0)
-    med = pq.top();
+    med = v.back();
   else {
-    x = pq.top();
-    pq.pop();
-    med = (pq.top() + x)/2.0;
+    x = v.back();
+    v.pop_back();
+    med = (v.back()*0.5 + x*0.5);
   }
   cout << setiosflags (ios::fixed) << setprecision(1) << med << endl;   
 
