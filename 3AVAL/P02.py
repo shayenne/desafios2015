@@ -6,8 +6,9 @@ def encontraReta(x1, y1, x2, y2, x3, y3, A, B, C, Area, soma):
     prod  = A*B/2.0
     delta = soma*soma - 4*prod
     #print soma*soma, math.sin(theta), prod
-    if delta < 0:
-        delta *= -1
+    print delta
+    #if delta < 0:
+    #    delta *= -1
     
     r1 = (soma + math.sqrt(delta))/2.0
     r2 = (soma - math.sqrt(delta))/2.0
