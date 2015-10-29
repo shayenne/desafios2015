@@ -2,11 +2,13 @@ import math
 
 def encontraReta(x1, y1, x2, y2, x3, y3, A, B, C, Area, soma):
     theta = math.acos((C*C - B*B - A*A)/(-2.0*A*B))
-    prod = Area/math.sin(theta)
-
+    #prod = Area/math.sin(theta)
+    prod  = A*B/2.0
     delta = soma*soma - 4*prod
-    if delta < 0:
-        delta *= -1
+    #print soma*soma, math.sin(theta), prod
+    print delta
+    #if delta < 0:
+    #    delta *= -1
     
     r1 = (soma + math.sqrt(delta))/2.0
     r2 = (soma - math.sqrt(delta))/2.0
@@ -14,6 +16,7 @@ def encontraReta(x1, y1, x2, y2, x3, y3, A, B, C, Area, soma):
     s1 = soma - r1
     s2 = soma - r2
 
+    #print "{0:.12f}".format(soma), "{0:.12f}".format(s1+r1), "{0:.12f}".format(s2+r2)
 
     if r1 <= B and s1 <= A:    
         p, q = x3 + (r1/B)* (x1 - x3), y3 + (r1/B) * (y1 - y3)
@@ -42,7 +45,9 @@ P = A + B + C
 
 soma = P/2.0
 
-Area = math.sqrt(soma*(soma-A)*(soma-B)*(soma-C))
+Area = ((x3 - x1) * (x3 - x1) + (y3 - y1) * (y3 - y2))/2.0
+
+#Area = math.sqrt(soma*(soma-A)*(soma-B)*(soma-C))
 
 
 

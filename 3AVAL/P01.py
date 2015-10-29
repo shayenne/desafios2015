@@ -1,3 +1,11 @@
+"""
+Nome: Shayenne Moura
+NUSP: 8536235
+MAC0327 - 2o sem 2015
+3a aval
+Problema P1 - 1588. Jamaica
+"""
+
 import math
 
 n = int(raw_input())
@@ -14,7 +22,7 @@ for i in xrange(n):
         
         x1, y1 = mapa[j]
         co = 1.0*(y1-y0)
-        ca = x1-x0
+        ca = 1.0*(x1-x0)
         
         
         dist = math.sqrt((x1-x0)*(x1-x0)+(y1-y0)*(y1-y0))
@@ -30,7 +38,7 @@ for i in xrange(n):
             proj = x0
         else:
             tang = (co/ca)
-            proj = (x1*y0 - x0*y1)/(y0-y1)
+            proj = (x1*y0 - x0*y1)/(1.0*(y0-y1))
         if (tang, proj) not in ang:
             ang[(tang, proj)] = dist
         elif ang[(tang, proj)] < dist:
@@ -40,8 +48,6 @@ total = 0
 for a in ang:
     total += ang[a]
 
+print "{0:.0f}".format(round(total))
 
-print "{0:.0f}".format(round(total+1E-8, 0))
-   
-    
     
