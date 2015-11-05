@@ -2,11 +2,12 @@ import sys
 
 n, m = map(int, raw_input().split())
 
-array = ["*" for x in range(n)]
-diff = [0 for x in range(n)]
-
 op = []
+a = [0 for i in range(n)]
+med = [0 for i in range(n)]
+d = [0 for i in range(n)]
 
+print a, med, d
 
 for i in xrange(m):
     op.append(map(int, raw_input().split()))
