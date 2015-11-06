@@ -6,15 +6,17 @@ def encontraReta(x1, y1, x2, y2, x3, y3, A, B, C, Area, soma):
     prod  = 1.0*A*B/2.0
     delta = soma*soma - 4*prod
     #print soma*soma, math.sin(theta), prod
+    #print prod, delta
     
     #if delta < 0:
     #    delta *= -1
     
     r1 = 1.0*(soma + math.sqrt(delta))/2.0
     r2 = 1.0*(soma - math.sqrt(delta))/2.0
-
+    
     s1 = soma - r1
     s2 = soma - r2
+    print r1, s1
     #print soma, r1, s1, r1+s1, A*B/2, r1*s1, Area/2
     #print "{0:.12f}".format(soma), "{0:.12f}".format(s1+r1), "{0:.12f}".format(s2+r2)
 
@@ -52,10 +54,13 @@ Area = 1.0*((x3 - x1) * (x3 - x1) + (y3 - y1) * (y3 - y2))/2.0
 
 
 resp = encontraReta(x1, y1, x2, y2, x3, y3, A, B, C, Area, soma)
+print "1", Area, soma
 if resp == None:
     resp =  encontraReta(x2, y2, x3, y3, x1, y1, B, C, A, Area, soma)
+    print "2"
 if resp == None:
     resp =  encontraReta(x1, y1, x3, y3, x2, y2, A, C, B, Area, soma)
+    print "3"
 if resp == None:
     print "NO"
     exit(0)
