@@ -1,3 +1,11 @@
+/*
+Nome: Shayenne Moura
+NUSP: 8536235
+MAC0327 - 2o sem 2015
+3a aval
+Problema P4 - 360A. Levko and Array Recovery
+ */
+
 #include<iostream>
 #include<vector>
 
