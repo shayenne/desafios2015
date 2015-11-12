@@ -1,0 +1,10 @@
+n, a, b, c = map(int, raw_input().split())
+
+
+m = min(a, b, c)
+
+if (n % m == 0):
+    print n/m
+
+else:
+    print "Ainda nao achei a resposta"
