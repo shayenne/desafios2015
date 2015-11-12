@@ -5,14 +5,13 @@ first = map(int, raw_input().split())
 second = map(int, raw_input().split())
 
 
-l = second.index(first[0])
+l = first.index(1)
 qtd = 0
 for i in xrange(n):
-    if first[(i+1)%n] == second[(l+1)%n]:
-        l+=1
-    else:
+    if first[(i+l+1)%n] >= first[(i+l)%n]:
         qtd += 1
-        l = second.index(first[(i+1)%n])
+    else:
+        break
 
 
-print qtd -1
+print n - qtd
