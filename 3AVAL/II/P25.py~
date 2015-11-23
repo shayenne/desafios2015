@@ -1,0 +1,26 @@
+n, x0 = map(int, raw_input().split())
+
+total = 0
+amax = 0
+bmax = 1000
+sa = sb = False
+for i in xrange(n):
+    a, b = map(int, raw_input().split())
+
+    if b < a:
+        a, b = b, a
+
+    if b < x0 and b < bmax:
+        bmax = b
+        sb = True
+    if a > x0 and a > amax:
+        amax = a
+        sa = True
+
+if sa:
+    total += amax - x0
+if sb:
+    total += x0 - bmax
+    
+print total
+        

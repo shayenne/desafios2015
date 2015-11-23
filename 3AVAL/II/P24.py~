@@ -1,0 +1,8 @@
+n, m = map(int, raw_input().split())
+
+
+draw = []
+for i in xrange(n):
+    draw.append(list(raw_input()))
+
+print draw
