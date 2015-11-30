@@ -1,0 +1,40 @@
+#include<bits/stdc.h>
+
+using namespace std;
+
+class pnt {
+public:
+	int x, y;
+	inline bool operator<( const point& P) const {
+		return (x != P.x) ? (x < P.x) : (y < P.y);
+	}
+};
+
+int main() {
+  int n;
+  set<pair<float, float> > pts;
+
+  cin >> n;
+
+  for (int i = 0; i < n; i++) {
+    set<pair<float,float>  > p;
+    cin >> p.first >> p.second;
+    pts.insert( p);
+  }
+
+  int grps = 0;
+  for (set<pair<float, float> >::iterator it1 = pts.begin(); it1 != pts.end(); it1++) {
+    set<pair<float,float>  >::iterator it2 = it1;
+    for (it2++; it2 != pts.end(); it2++) {
+      if (((it1->first + it2->first) % 2 == 0) && ((it1->second + it2->second) % 2 == 0)) {
+
+	if (pts.find( make_pair( (it1->first + it2->first) / 2, (it1->second + it2->second) / 2)) != pts.end()) {
+	  grps++;
+	}
+      }
+    }
+  }
+  cout << grps << endl;
+  
+  return 0;
+}

@@ -1,0 +1,29 @@
+n, m = map(int, raw_input().split())
+
+city = []
+imin = 100
+jmin = 100
+imax = 0
+jmax = 0
+for i in xrange(n):
+    city.append(list(raw_input()))
+
+    for j in xrange(m):
+        if city[i] == "*":
+            if i < imin:
+                imin = i
+            if j < jmin:
+                jmin = j
+            if i > imax:
+                imax = i
+            if j > jmax:
+                jmax = j
+
+if city[imin][jmin] != "*":
+    print imin, jmin                
+elif city[imin][jmax] != "*":
+    print imin, jmax                
+elif city[imax][jmin] != "*":
+    print imax, jmin                
+elif city[imax][jmax] != "*":
+    print imax, jmax                
