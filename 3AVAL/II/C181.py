@@ -1,51 +1,44 @@
-import sys
+n, m, l = map(int, raw_input().split())
 
-start = raw_input()
-end = raw_input()
-k = int(raw_input())
+planet = []
 
-dpA = [-1 for i in xrange(k+1)]
-dpB = [-1 for i in xrange(k+1)]
+for i in xrange(n):
+    nome = raw_input()
+    op = []
+    for j in xrange(m):
+        
+        a, b, c = map(int, raw_input().split())
 
-def calculaA(n):
-    global dpA, dpB
-    if n == 0:
-        return 0
-    if dpA[n-1] == -1:
-        calculaA(n-1)
+        op.append([a, b, c])
 
-    dpA[n] = dpA[n-1]*(A-1) + dpB[n-1]*A
-    dpB[n] = dpA[n-1]*B     + dpB[n-1]*(B-1)
-
-    return dpA[n]
-
-if start == end and k == 0:
-    print 1
-    exit(0)
-
-A = B = 0
-
-if start != end:
-    dpA[0] = 0
-    dpB[0] = 1
-else:
-    dpA[0] = 1
-    dpB[0] = 0
+    planet.append(op)
 
 
-for i in xrange(len(start)):
-    now = start[i:]+start[:i]
-    
-    if now == end:
-        A += 1
-    else:
-        B += 1
+maximo = 0
 
+for i in xrange(n):
+    for j in xrange(n):
+        if i != j:
+            pft = []
+            for k in xrange(m):
+                luc = planet[j][k][1] - planet[i][k][0]
+                pft.append([luc, planet[i][k][2]])
+                           
+            pft.sort(reverse=True, key=lambda tup:tup[0])
 
+            qtd = 0
+            ganho = 0
+            for r in xrange(len(pft)):
+                if qtd + pft[r][1] <= l and pft[r][0] > 0:
+                    ganho += pft[r][0]*pft[r][1]
+                    qtd += pft[r][1]
+                elif pft[r][0] > 0:
+                    ganho += pft[r][0]*(l-qtd)
+                    break
+            
+                          
 
-for n in xrange(1, k+1):
-    dpA[n] = (dpA[n-1]*(A-1) + dpB[n-1]*A)%1000000007
-    dpB[n] = (dpA[n-1]*B     + dpB[n-1]*(B-1))%1000000007
+            if ganho > maximo:
+                maximo = ganho
 
-print dpA[k]
-
+print maximo
