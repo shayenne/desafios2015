@@ -1,0 +1,20 @@
+n = int(raw_input().split())
+
+s = map(int, list(raw_input()))
+w = map(int, list(raw_input()))
+
+iok = jok = False
+
+if "?" not in s and "?" not in w:
+    for i in xrange(n):
+        if s[i] > w[i]:
+            iok = True
+        if s[i] < w[i]:
+            jok = True
+            
+    if iok and jok:
+        print 1
+    else:
+        print 0
+
+
