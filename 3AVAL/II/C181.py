@@ -1,4 +1,11 @@
-# Shayenne Moura
+"""
+Nome: Shayenne Moura
+NUSP: 8536235
+MAC0327 - 2o sem 2015
+3a aval
+Problema P31 - 176A. Trading Business
+"""
+
 
 n, m, l = map(int, raw_input().split())
 
