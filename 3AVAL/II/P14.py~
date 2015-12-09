@@ -1,0 +1,18 @@
+t = int(raw_input())
+
+A = B = []
+
+graph = {}
+for i in xrange(t):
+    n, A = map(int, raw_input().split())
+    m, B = map(int, raw_input().split())
+
+    for j in xrange(n):
+        for k in xrange(m):
+            if B[k] % A[j] == 0:
+                if A[j] not in graph:
+                    graph[A[j]] = []
+                graph[A[j]].append(B[k])
+
+
+    print graph

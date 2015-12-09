@@ -1,0 +1,163 @@
+P14.cpp: In function ‘void printGraph(std::map<std::pair<char, int>, std::list<std::pair<char, int> > >&)’:
+P14.cpp:13:20: error: no matching function for call to ‘begin(std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >&)’
+       for (auto j: i) 
+                    ^
+In file included from /usr/include/c++/5.1.1/x86_64-redhat-linux/bits/stdc++.h:94:0,
+                 from P14.cpp:1:
+/usr/include/c++/5.1.1/valarray:1206:5: note: candidate: template<class _Tp> const _Tp* std::begin(const std::valarray<_Tp>&)
+     begin(const valarray<_Tp>& __va)
+     ^
+/usr/include/c++/5.1.1/valarray:1206:5: note:   template argument deduction/substitution failed:
+P14.cpp:13:20: note:   ‘std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’ is not derived from ‘const std::valarray<_Tp>’
+       for (auto j: i) 
+                    ^
+In file included from /usr/include/c++/5.1.1/x86_64-redhat-linux/bits/stdc++.h:94:0,
+                 from P14.cpp:1:
+/usr/include/c++/5.1.1/valarray:1196:5: note: candidate: template<class _Tp> _Tp* std::begin(std::valarray<_Tp>&)
+     begin(valarray<_Tp>& __va)
+     ^
+/usr/include/c++/5.1.1/valarray:1196:5: note:   template argument deduction/substitution failed:
+P14.cpp:13:20: note:   ‘std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’ is not derived from ‘std::valarray<_Tp>’
+       for (auto j: i) 
+                    ^
+In file included from /usr/include/c++/5.1.1/string:51:0,
+                 from /usr/include/c++/5.1.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/5.1.1/bits/ios_base.h:41,
+                 from /usr/include/c++/5.1.1/ios:42,
+                 from /usr/include/c++/5.1.1/istream:38,
+                 from /usr/include/c++/5.1.1/sstream:38,
+                 from /usr/include/c++/5.1.1/complex:45,
+                 from /usr/include/c++/5.1.1/ccomplex:38,
+                 from /usr/include/c++/5.1.1/x86_64-redhat-linux/bits/stdc++.h:52,
+                 from P14.cpp:1:
+/usr/include/c++/5.1.1/bits/range_access.h:87:5: note: candidate: template<class _Tp, long unsigned int _Nm> _Tp* std::begin(_Tp (&)[_Nm])
+     begin(_Tp (&__arr)[_Nm])
+     ^
+/usr/include/c++/5.1.1/bits/range_access.h:87:5: note:   template argument deduction/substitution failed:
+P14.cpp:13:20: note:   mismatched types ‘_Tp [_Nm]’ and ‘std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’
+       for (auto j: i) 
+                    ^
+In file included from /usr/include/c++/5.1.1/string:51:0,
+                 from /usr/include/c++/5.1.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/5.1.1/bits/ios_base.h:41,
+                 from /usr/include/c++/5.1.1/ios:42,
+                 from /usr/include/c++/5.1.1/istream:38,
+                 from /usr/include/c++/5.1.1/sstream:38,
+                 from /usr/include/c++/5.1.1/complex:45,
+                 from /usr/include/c++/5.1.1/ccomplex:38,
+                 from /usr/include/c++/5.1.1/x86_64-redhat-linux/bits/stdc++.h:52,
+                 from P14.cpp:1:
+/usr/include/c++/5.1.1/bits/range_access.h:58:5: note: candidate: template<class _Container> decltype (__cont.begin()) std::begin(const _Container&)
+     begin(const _Container& __cont) -> decltype(__cont.begin())
+     ^
+/usr/include/c++/5.1.1/bits/range_access.h:58:5: note:   template argument deduction/substitution failed:
+/usr/include/c++/5.1.1/bits/range_access.h: In substitution of ‘template<class _Container> decltype (__cont.begin()) std::begin(const _Container&) [with _Container = std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >]’:
+P14.cpp:13:20:   required from here
+/usr/include/c++/5.1.1/bits/range_access.h:58:5: error: ‘const struct std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’ has no member named ‘begin’
+/usr/include/c++/5.1.1/bits/range_access.h:48:5: note: candidate: template<class _Container> decltype (__cont.begin()) std::begin(_Container&)
+     begin(_Container& __cont) -> decltype(__cont.begin())
+     ^
+/usr/include/c++/5.1.1/bits/range_access.h:48:5: note:   template argument deduction/substitution failed:
+/usr/include/c++/5.1.1/bits/range_access.h: In substitution of ‘template<class _Container> decltype (__cont.begin()) std::begin(_Container&) [with _Container = std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >]’:
+P14.cpp:13:20:   required from here
+/usr/include/c++/5.1.1/bits/range_access.h:48:5: error: ‘struct std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’ has no member named ‘begin’
+In file included from /usr/include/c++/5.1.1/bits/range_access.h:36:0,
+                 from /usr/include/c++/5.1.1/string:51,
+                 from /usr/include/c++/5.1.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/5.1.1/bits/ios_base.h:41,
+                 from /usr/include/c++/5.1.1/ios:42,
+                 from /usr/include/c++/5.1.1/istream:38,
+                 from /usr/include/c++/5.1.1/sstream:38,
+                 from /usr/include/c++/5.1.1/complex:45,
+                 from /usr/include/c++/5.1.1/ccomplex:38,
+                 from /usr/include/c++/5.1.1/x86_64-redhat-linux/bits/stdc++.h:52,
+                 from P14.cpp:1:
+/usr/include/c++/5.1.1/initializer_list:89:5: note: candidate: template<class _Tp> constexpr const _Tp* std::begin(std::initializer_list<_Tp>)
+     begin(initializer_list<_Tp> __ils) noexcept
+     ^
+/usr/include/c++/5.1.1/initializer_list:89:5: note:   template argument deduction/substitution failed:
+P14.cpp:13:20: note:   ‘std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’ is not derived from ‘std::initializer_list<_Tp>’
+       for (auto j: i) 
+                    ^
+P14.cpp:13:20: error: no matching function for call to ‘end(std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >&)’
+In file included from /usr/include/c++/5.1.1/x86_64-redhat-linux/bits/stdc++.h:94:0,
+                 from P14.cpp:1:
+/usr/include/c++/5.1.1/valarray:1226:5: note: candidate: template<class _Tp> const _Tp* std::end(const std::valarray<_Tp>&)
+     end(const valarray<_Tp>& __va)
+     ^
+/usr/include/c++/5.1.1/valarray:1226:5: note:   template argument deduction/substitution failed:
+P14.cpp:13:20: note:   ‘std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’ is not derived from ‘const std::valarray<_Tp>’
+       for (auto j: i) 
+                    ^
+In file included from /usr/include/c++/5.1.1/x86_64-redhat-linux/bits/stdc++.h:94:0,
+                 from P14.cpp:1:
+/usr/include/c++/5.1.1/valarray:1216:5: note: candidate: template<class _Tp> _Tp* std::end(std::valarray<_Tp>&)
+     end(valarray<_Tp>& __va)
+     ^
+/usr/include/c++/5.1.1/valarray:1216:5: note:   template argument deduction/substitution failed:
+P14.cpp:13:20: note:   ‘std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’ is not derived from ‘std::valarray<_Tp>’
+       for (auto j: i) 
+                    ^
+In file included from /usr/include/c++/5.1.1/string:51:0,
+                 from /usr/include/c++/5.1.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/5.1.1/bits/ios_base.h:41,
+                 from /usr/include/c++/5.1.1/ios:42,
+                 from /usr/include/c++/5.1.1/istream:38,
+                 from /usr/include/c++/5.1.1/sstream:38,
+                 from /usr/include/c++/5.1.1/complex:45,
+                 from /usr/include/c++/5.1.1/ccomplex:38,
+                 from /usr/include/c++/5.1.1/x86_64-redhat-linux/bits/stdc++.h:52,
+                 from P14.cpp:1:
+/usr/include/c++/5.1.1/bits/range_access.h:97:5: note: candidate: template<class _Tp, long unsigned int _Nm> _Tp* std::end(_Tp (&)[_Nm])
+     end(_Tp (&__arr)[_Nm])
+     ^
+/usr/include/c++/5.1.1/bits/range_access.h:97:5: note:   template argument deduction/substitution failed:
+P14.cpp:13:20: note:   mismatched types ‘_Tp [_Nm]’ and ‘std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’
+       for (auto j: i) 
+                    ^
+In file included from /usr/include/c++/5.1.1/string:51:0,
+                 from /usr/include/c++/5.1.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/5.1.1/bits/ios_base.h:41,
+                 from /usr/include/c++/5.1.1/ios:42,
+                 from /usr/include/c++/5.1.1/istream:38,
+                 from /usr/include/c++/5.1.1/sstream:38,
+                 from /usr/include/c++/5.1.1/complex:45,
+                 from /usr/include/c++/5.1.1/ccomplex:38,
+                 from /usr/include/c++/5.1.1/x86_64-redhat-linux/bits/stdc++.h:52,
+                 from P14.cpp:1:
+/usr/include/c++/5.1.1/bits/range_access.h:78:5: note: candidate: template<class _Container> decltype (__cont.end()) std::end(const _Container&)
+     end(const _Container& __cont) -> decltype(__cont.end())
+     ^
+/usr/include/c++/5.1.1/bits/range_access.h:78:5: note:   template argument deduction/substitution failed:
+/usr/include/c++/5.1.1/bits/range_access.h: In substitution of ‘template<class _Container> decltype (__cont.end()) std::end(const _Container&) [with _Container = std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >]’:
+P14.cpp:13:20:   required from here
+/usr/include/c++/5.1.1/bits/range_access.h:78:5: error: ‘const struct std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’ has no member named ‘end’
+/usr/include/c++/5.1.1/bits/range_access.h:68:5: note: candidate: template<class _Container> decltype (__cont.end()) std::end(_Container&)
+     end(_Container& __cont) -> decltype(__cont.end())
+     ^
+/usr/include/c++/5.1.1/bits/range_access.h:68:5: note:   template argument deduction/substitution failed:
+/usr/include/c++/5.1.1/bits/range_access.h: In substitution of ‘template<class _Container> decltype (__cont.end()) std::end(_Container&) [with _Container = std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >]’:
+P14.cpp:13:20:   required from here
+/usr/include/c++/5.1.1/bits/range_access.h:68:5: error: ‘struct std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’ has no member named ‘end’
+In file included from /usr/include/c++/5.1.1/bits/range_access.h:36:0,
+                 from /usr/include/c++/5.1.1/string:51,
+                 from /usr/include/c++/5.1.1/bits/locale_classes.h:40,
+                 from /usr/include/c++/5.1.1/bits/ios_base.h:41,
+                 from /usr/include/c++/5.1.1/ios:42,
+                 from /usr/include/c++/5.1.1/istream:38,
+                 from /usr/include/c++/5.1.1/sstream:38,
+                 from /usr/include/c++/5.1.1/complex:45,
+                 from /usr/include/c++/5.1.1/ccomplex:38,
+                 from /usr/include/c++/5.1.1/x86_64-redhat-linux/bits/stdc++.h:52,
+                 from P14.cpp:1:
+/usr/include/c++/5.1.1/initializer_list:99:5: note: candidate: template<class _Tp> constexpr const _Tp* std::end(std::initializer_list<_Tp>)
+     end(initializer_list<_Tp> __ils) noexcept
+     ^
+/usr/include/c++/5.1.1/initializer_list:99:5: note:   template argument deduction/substitution failed:
+P14.cpp:13:20: note:   ‘std::pair<const std::pair<char, int>, std::list<std::pair<char, int> > >’ is not derived from ‘std::initializer_list<_Tp>’
+       for (auto j: i) 
+                    ^
+P14.cpp: At global scope:
+P14.cpp:19:1: error: expected declaration before ‘}’ token
+ }
+ ^
