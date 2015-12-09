@@ -1,6 +1,42 @@
+g = {1:(-1, -1)}
+
+def calculaCaminhoMore(x, a, n):
+    global g
+
+    if x <= 0 or x > n:
+        return True
+
+    if x in g:
+        return False
+    
+    v = calculaCaminho(x+a[x], a, n)
+    
+    if v:
+        more = a[x] + v
+    else:
+        g[x] = -1
+        return -1
+
+    g[x] = more
+    
+    return 0
+
+
+
+
 n = int(raw_input())
 a = [0, 1]
 a += map(int, raw_input().split())
+"""
+print a
+
+for i in xrange(2, n+1):
+    if i not in g:
+        calculaCaminho(i, a, n)
+
+    
+print g
+"""
 
 cls = []
 
