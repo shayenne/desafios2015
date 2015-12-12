@@ -11,16 +11,47 @@ def bfs(mais, menos):
     v = 0
 
     fila = [[],[]]
-    for i in xrange(len(menos)):
-        print menos
-        if menos[v][i] != [] and menos[v][i][2] == 0:
+    for i in xrange(len(menos[v])):
+        print menos, v, i, menos[v]
+        if menos[v] is not [] and menos[v][i][2] == 0:
             fila[0].append([v, menos[i]])
 
-    for i in xrange(len(mais)):
+    for i in xrange(len(mais[v])):
         print mais
         if mais[v][i][2] == 0:
             fila[0].append(v, mais[i])
 
+    ind = 0
+    while fila[0] is not [] or fila[1] is not []:
+        if fila[ind] is []:
+            if ind == 0:
+                ind = 1
+            else:
+                ind = 0
+
+        v = fila[ind].pop()
+        print v
+        v[2] = 1
+        
+        if ind == 0:
+            adj = mais
+            dc = 1
+        else:
+            adj = menos
+            dc = 0
+
+        for it in adj[v[1]]:
+            if not it[2]:
+                it[1] += it[1]
+                if it[2] == 1:
+                    soma[it[0]] = it[1]
+
+                else:
+                    fila[dc].append(it[0], it)
+
+        ind = dc
+
+    return soma
 
 n = int(raw_input())
 
@@ -46,5 +77,5 @@ for i in xrange(len(a)):
 
     soma = bfs(mais, menos)
 
-    for i in len(soma):
+    for i in xrange(len(soma)):
         print soma[i]
